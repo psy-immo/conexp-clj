@@ -11,7 +11,7 @@
         [conexp.layouts.base :only (positions, connections,
                                     nodes, update-positions, annotation)]
         [conexp.layouts.util :only (enclosing-rectangle)]
-        conexp.contrib.draw.nodes-and-connections
+        conexp.contrib.draw.basic-objects
         conexp.contrib.draw.scenes
         conexp.contrib.gui.util)
   (:import [javax.swing JFrame JButton JPanel JLabel]

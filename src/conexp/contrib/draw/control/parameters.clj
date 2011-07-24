@@ -17,7 +17,7 @@
         conexp.contrib.gui.util
         conexp.contrib.draw.scenes
         conexp.contrib.draw.scene-layouts
-        conexp.contrib.draw.nodes-and-connections
+        conexp.contrib.draw.basic-objects
         conexp.contrib.draw.control.util)
   (:import [javax.swing JButton JTextField JComboBox]))
 

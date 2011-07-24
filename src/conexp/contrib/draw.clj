@@ -7,15 +7,10 @@
 ;; You must not remove this notice, or any other, from this software.
 
 (ns conexp.contrib.draw
-  (:use conexp.base)
-  (:require conexp.contrib.draw.scene-layouts
-            conexp.contrib.draw.nodes-and-connections
-            conexp.contrib.draw.lattices))
-
-;;;
+  (:use conexp.base))
 
 (immigrate 'conexp.contrib.draw.scene-layouts
-           'conexp.contrib.draw.nodes-and-connections
+           'conexp.contrib.draw.moving-objects
            'conexp.contrib.draw.lattices)
 
 ;;;

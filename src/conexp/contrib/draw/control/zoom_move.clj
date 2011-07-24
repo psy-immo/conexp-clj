@@ -10,7 +10,7 @@
   (:use conexp.contrib.draw.control.util
         conexp.contrib.gui.util
         conexp.contrib.draw.scenes
-        conexp.contrib.draw.nodes-and-connections)
+        conexp.contrib.draw.basic-objects)
   (:import [javax.swing JButton JLabel]))
 
 ;;;
