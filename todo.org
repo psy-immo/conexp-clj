@@ -34,13 +34,7 @@
    - [ ] svg
    - [ ] povray
 ** INPROGRESS draw-lattice-to-file                                   :Daniel:
-   We need some function (i.e. draw-lattice-to-file) which produces a
-   file of the picture of a lattice layout, when given the same
-   arguments as draw-lattice.
-
-   For this we need some abstrace picture-drawing facility, which can
-   produce pictures without showing them. For that we could use svg
-   (also as output format for layouts) and simply write it to a file.
+   Do this via svg output.
 ** INPROGRESS Allow additional arguments to write-context            :Daniel:
    depending on the current layout.
 ** INPROGRESS More IO formats for contexts [2/5]                     :Daniel:
