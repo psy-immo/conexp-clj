@@ -154,11 +154,11 @@
 (defn- pairs->fuzzy-set
   "Does what it says."
   [pairs]
-  (-> (reduce! (fn [map [x v]]
-                 (if (or (not (contains? map x))
-                         (< (map x) v))
-                   (assoc! map x v)
-                   map))
+  (-> (reduce (fn [map [x v]]
+                (if (or (not (contains? map x))
+                        (< (map x) v))
+                  (assoc map x v)
+                  map))
                {}
                pairs)
       make-fuzzy-set))
@@ -166,9 +166,29 @@
 (defn- fuzzy-set->pairs
   "Does what it says."
   [values fset]
-  (seq (set-of [x v] | [x a] fset, v values :when (<= v a))))
+  (set-of [x v] | [x a] fset, v values :when (<= v a)))
 
+(defn- pairs-set-closure
+  "Implements closure operator of given fuzzy context as a closure operator on the
+  cross-product of the attributes and the truth values of fctx."
+  ([fctx set-of-pairs hedge]
+     (let [fuzzy-set (pairs->fuzzy-set set-of-pairs)]
+       (fuzzy-set->pairs (values fctx)
+                         (fuzzy-oprime fctx
+                                       (fuzzy-aprime fctx fuzzy-set)
+                                       hedge))))
+  ([fctx set-of-pairs]
+     (pairs-set-closure fctx set-of-pairs globalization)))
 
+(defn fuzzy-intents
+  "Returns the set of all fuzzy intents of fctx."
+  ([fctx hedge]
+     (->> (all-closed-sets (cross-product (attributes fctx)
+                                          (values fctx))
+                           #(pairs-set-closure fctx % hedge))
+          (map pairs->fuzzy-set)))
+  ([fctx]
+     (fuzzy-intents fctx globalization)))
 
 ;;;
 
