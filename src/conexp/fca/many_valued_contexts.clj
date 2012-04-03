@@ -26,7 +26,7 @@
   (attributes [this] attributes)
   (incidence [this] incidence))
 
-(defn mv-context-to-string
+(defn ^String mv-context-to-string
   "Returns a string representing the given many-valued context mv-ctx
   as a value-table."
   ([mv-ctx]
