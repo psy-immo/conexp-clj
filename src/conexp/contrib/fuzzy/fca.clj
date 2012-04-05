@@ -181,7 +181,7 @@
      (pairs-set-closure fctx set-of-pairs globalization)))
 
 (defn fuzzy-intents
-  "Returns the set of all fuzzy intents of fctx."
+  "Returns a sequence of all fuzzy intents of fctx."
   ([fctx hedge]
      (->> (all-closed-sets (cross-product (attributes fctx)
                                           (values fctx))
@@ -190,10 +190,17 @@
   ([fctx]
      (fuzzy-intents fctx globalization)))
 
+(defn fuzzy-concepts
+  "Returns a sequence of all fuzzy concepts of fctx."
+  ([fctx hedge]
+     (map #(vector (fuzzy-aprime fctx %) %)
+          (fuzzy-intents fctx hedge)))
+  ([fctx]
+     (fuzzy-concepts fctx globalization)))
+
 ;;;
 
 ;;; TODO:
-;;;  - Compute fuzzy concepts
 ;;;  - attribute exploration?
 ;;;  - non-redundant basis of implications
 
