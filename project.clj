@@ -12,39 +12,22 @@
   :min-lein-version "1.3.0"
   :description "A ConExp rewrite in clojure"
   :url "http://daniel.kxpq.de/math/conexp-clj/"
+  :repositories {"math" "http://www.math.tu-dresden.de/~borch/repos/mvn/"}
   :dependencies [[org.clojure/clojure             "1.3.0"]
                  [org.clojure/tools.cli           "0.1.0"]
                  [org.clojure/core.incubator      "0.1.0"]
                  [org.clojure/math.combinatorics  "0.0.1"]
                  [org.clojure/math.numeric-tower  "0.0.1"]
-                 [org.apache.commons/commons-math "2.1"]]
+                 [org.apache.commons/commons-math "2.1"]
+                 [conexp-clj/G                    "0.1.1"]
+                 [conexp-clj/LatDraw              "0.0.1"]]
   :aot [conexp.main
         conexp.contrib.gui
         conexp.contrib.java]
   :keep-non-project-classes true
   :warn-on-reflection true
-  :test-path "src/test/")
-
-;;;
-
-(use '[clojure.java.io    :only (copy)]
-     '[clojure.java.shell :only (sh)]
-     '[robert.hooke       :only (add-hook)])
-
-(require 'leiningen.deps)
-
-(defn copy-file [name]
-  (let [source (java.io.File. (str "stuff/libs/" name)),
-        target (java.io.File. (str "lib/" name))]
-    (when-not (.exists target)
-      (println (str "Copying " name " to lib"))
-      (copy source target))))
-
-(add-hook #'leiningen.deps/deps
-          (fn [f & args]
-            (apply f args)
-            (copy-file "G.jar")
-            (copy-file "LatDraw.jar")))
+  :test-path "src/test/"
+  :compile-path "lib/classes/")
 
 ;;;
 

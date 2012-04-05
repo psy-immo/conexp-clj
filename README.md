@@ -45,6 +45,7 @@ Now switch in the source directory of conexp-clj and run
 
 This will download any missing jar files needed for conexp-clj to run. With
 this you can now run conexp-clj directly from source and hack in its internals!
+
 For a fast repl run
 
     $ lein repl
@@ -63,6 +64,7 @@ To create a standalone zip just run `make` in the top source directory. This
 will do everything to create a zip archive containing a compiled version of
 conexp-clj. You can also run this compiled version directly by invoking
 ./conexp-clj/bin/conexp-clj.sh.
+
 
 
 Contributing Authors
